@@ -208,41 +208,41 @@ if st.button("Найти минимальные расстояния"):
         else:
             dist, prev = dijkstra(graph, start_vertex)
 
-             col1, col2 = st.columns([1.2, 1])
- with col1:
-     st.subheader("3) Визуализация графа")
-     dot = make_dot(edges, start_vertex)
-     st.graphviz_chart(dot, use_container_width=True)
-    
- with col2:
-     st.subheader("4) Результат")
+            col1, col2 = st.columns([1.2, 1])
+            with col1:
+                st.subheader("3) Визуализация графа")
+                dot = make_dot(edges, start_vertex)
+                st.graphviz_chart(dot, use_container_width=True)
 
-     result_rows = []
-     for vertex in dist.keys():
-         if math.isinf(dist[vertex]):
-             path_str = "пути нет"
-             dist_str = "∞"
-         else:
-            path = restore_path(prev, start_vertex, vertex)
-            path_str = " → ".join(path) if path else "пути нет"
-            dist_str = int(dist[vertex])
+            with col2:
+                st.subheader("4) Результат")
 
-        result_rows.append({
-            "Вершина": vertex,
-            "Минимальное расстояние": dist_str,
-            "Путь": path_str
-        })
+                result_rows = []
+                for vertex in dist.keys():
+                    if math.isinf(dist[vertex]):
+                        path_str = "пути нет"
+                        dist_str = "∞"
+                    else:
+                        path = restore_path(prev, start_vertex, vertex)
+                        path_str = " → ".join(path) if path else "пути нет"
+                        dist_str = int(dist[vertex])
 
-#     result_df = pd.DataFrame(result_rows)
-#     st.dataframe(result_df, use_container_width=True, hide_index=True)
+                    result_rows.append({
+                        "Вершина": vertex,
+                        "Минимальное расстояние": dist_str,
+                        "Путь": path_str
+                    })
 
-#     st.markdown("**Пояснение:**")
-#     for vertex in dist.keys():
-#         if math.isinf(dist[vertex]):
-#             st.write(f"Из {start_vertex} в {vertex}: пути нет")
-#         else:
-#             path = restore_path(prev, start_vertex, vertex)
-#             path_str = " → ".join(path)
-#             st.write(
-#                 f"Из {start_vertex} в {vertex}: расстояние = {int(dist[vertex])}, путь: {path_str}"
-#             )
+                result_df = pd.DataFrame(result_rows)
+                st.dataframe(result_df, use_container_width=True, hide_index=True)
+
+                st.markdown("**Пояснение:**")
+                for vertex in dist.keys():
+                    if math.isinf(dist[vertex]):
+                        st.write(f"Из {start_vertex} в {vertex}: пути нет")
+                    else:
+                        path = restore_path(prev, start_vertex, vertex)
+                        path_str = " → ".join(path)
+                        st.write(
+                            f"Из {start_vertex} в {vertex}: расстояние = {int(dist[vertex])}, путь: {path_str}"
+                        )
