@@ -214,24 +214,24 @@ if st.button("Найти минимальные расстояния"):
      dot = make_dot(edges, start_vertex)
      st.graphviz_chart(dot, use_container_width=True)
     
-# with col2:
-#     st.subheader("4) Результат")
+ with col2:
+     st.subheader("4) Результат")
 
-#     result_rows = []
-#     for vertex in dist.keys():
-#         if math.isinf(dist[vertex]):
-#             path_str = "пути нет"
-#             dist_str = "∞"
-#         else:
-#             path = restore_path(prev, start_vertex, vertex)
-#             path_str = " → ".join(path) if path else "пути нет"
-#             dist_str = int(dist[vertex])
+     result_rows = []
+     for vertex in dist.keys():
+         if math.isinf(dist[vertex]):
+             path_str = "пути нет"
+             dist_str = "∞"
+         else:
+            path = restore_path(prev, start_vertex, vertex)
+            path_str = " → ".join(path) if path else "пути нет"
+            dist_str = int(dist[vertex])
 
-#         result_rows.append({
-#             "Вершина": vertex,
-#             "Минимальное расстояние": dist_str,
-#             "Путь": path_str
-#         })
+        result_rows.append({
+            "Вершина": vertex,
+            "Минимальное расстояние": dist_str,
+            "Путь": path_str
+        })
 
 #     result_df = pd.DataFrame(result_rows)
 #     st.dataframe(result_df, use_container_width=True, hide_index=True)
