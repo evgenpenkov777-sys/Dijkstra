@@ -209,7 +209,11 @@ if st.button("Найти минимальные расстояния"):
             dist, prev = dijkstra(graph, start_vertex)
 
             col1, col2 = st.columns([1.2, 1])
-
+with col1:
+    st.subheader("3) Визуализация графа")
+    dot = make_dot(edges, start_vertex)
+    st.graphviz_chart(dot, use_container_width=True)
+    
 with col2:
     st.subheader("4) Результат")
 
