@@ -18,11 +18,13 @@ st.title("Демонстрация алгоритма Дейкстры (Евге
 # ----------------------------
 # Положите файл dijkstra.png рядом с app.py
 try:
-    st.image("Dijkstra1.png", use_container_width=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("Dijkstra1.png", use_container_width=True)
 except Exception:
     st.info("Если хотите картинку сверху, положите в проект файл Dijkstra1.png")
 
-st.markdown("Задайте веса рёбер графа, выберите стартовую вершину и получите минимальные расстояния.")
+st.markdown("Задайте расстояние между вершинами, выберите стартовую вершину и получите минимальные расстояния и кратчайший путь.")
 st.markdown(
     """
     **Как заполнять таблицу:**
